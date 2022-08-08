@@ -2,76 +2,78 @@
 <html lang="ru">
 
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-	<title>Document</title>
-	<link rel="stylesheet" href="./css/normalize.css">
-	<link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=0, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/normalize.css">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
-	<div class="container">
-		<header class="header">
-			<div class="header-container">
-				<img src="./img/logo.svg" alt="company logo" class="header-logo__img">
-			</div>
-		</header>
+  <div class="container">
+    <header class="header">
+      <div class="header-container">
+        <img src="./assets/images/logo.svg" alt="company logo" class="header-logo__img">
+      </div>
+    </header>
 
-		<main>
-			<section class="section-social">
-				<div class="social-container">
-					<h2 class="title social-title">Get iintoo it today</h2>
-					<p class="social-decription">There is no charge or obligation upon registration.</p>
-					<div class="btn-container">
-						<button class="btn social-btn social-btn__fb"><img src="./img/facebook.svg" alt="FB logo"
-								class="btn-img btn-img__fb">Register with Facebook</button>
-						<button class="btn social-btn social-btn__in"><img src="./img/linkedin.svg" alt="In logo"
-								class="btn-img btn-img__in">Register with Linkedin</button>
-					</div>
-				</div>
-				<div class="span-container">
-					<span class="social-span">OR</span>
-				</div>
-				<form action="#" class="form">
-					<label class="social-label label-email">Email<input id="email" name="email" class="social-input"></label>
-					<label class="social-label label-phone">Phone<input type="tel" name="phone" class="social-input"></label>
-				</form>
-			</section>
+    <main>
+      <form action="#">
+        <div class="section-social">
+          <div class="social-container">
+            <h2 class="title social-title">Get iintoo it today</h2>
+            <p class="social-decription">There is no charge or obligation upon registration.</p>
+            <div class="btn-container">
+              <button class="btn social-btn social-btn__fb" aria-label="Register with Facebook"><img src="./assets/images/facebook.svg" alt="FB logo"
+                  class="btn-img btn-img__fb">Register with Facebook</button>
+              <button class="btn social-btn social-btn__in" aria-label="Register with Linkedin"><img src="./assets/images/linkedin.svg" alt="In logo"
+                  class="btn-img btn-img__in">Register with Linkedin</button>
+            </div>
+          </div>
+          <div class="span-container">
+            <span class="social-span">OR</span>
+          </div>
+          <div class="input-container">
+            <label class="social-label label-email">Email<input id="email" name="email" class="social-input" aria-label="Введите email"></label>
+            <label class="social-label label-phone">Phone<input type="tel" name="phone" class="social-input" aria-label="Введите номер телефона"></label>
+          </div>
+        </div>
 
-			<section class="section-investor">
-				<h2 class="title investor-title">What type of investor are you?</h2>
-				<p class="investor-description">Select the type of investor you are below.</p>
-				<form action="#" class="form investor-form">
-					<input type="radio" id="individual" class="investor-input" name="radio" checked>
-					<label for="individual" class="investor-label">Individual<span class="investor-info"><img
-								src="./img/infobox-info-icon-info-icon-svg-1271513.svg" alt="info" class="img-checkbox"></span></label>
-					<input type="radio" id="business" class="investor-input" name="radio">
-					<label for="business" class="investor-label">Business<span class="investor-info"><img
-								src="./img/infobox-info-icon-info-icon-svg-1271513.svg" alt="info" class="img-checkbox"></span></label>
-					<input type="radio" id="ira" class="investor-input" name="radio">
-					<label for="ira" class="investor-label">IRA<span class="investor-info"><img
-								src="./img/infobox-info-icon-info-icon-svg-1271513.svg" alt="info" class="img-checkbox"></span></label>
-					<input type="radio" id="trust" class="investor-input" name="radio">
-					<label for="trust" class="investor-label">Trust<span class="investor-info"><img
-								src="./img/infobox-info-icon-info-icon-svg-1271513.svg" alt="info" class="img-checkbox"></span></label>
-				</form>
-				<div class="investor-tultip">
-					<p class="investor-paragraph">I am a natural person investing on my own behalf as a sole owner, joint
-						tenant, or tenant in common.</p>
-				</div>
-			</section>
+        <div class="section-investor">
+          <h2 class="title investor-title">What type of investor are you?</h2>
+          <p class="investor-description">Select the type of investor you are below.</p>
+          <div class="input-container investor-form">
+            <input type="radio" id="individual" class="investor-input" name="radio" checked>
+            <label for="individual" class="investor-label">Individual<span class="investor-info"><img
+                  src="./assets/images/info-icon.svg" alt="Дополнительная информация" class="img-checkbox"></span></label>
+            <input type="radio" id="business" class="investor-input" name="radio">
+            <label for="business" class="investor-label">Business<span class="investor-info"><img
+                  src="./assets/images/info-icon.svg" alt="Дополнительная информация" class="img-checkbox"></span></label>
+            <input type="radio" id="ira" class="investor-input" name="radio">
+            <label for="ira" class="investor-label">IRA<span class="investor-info"><img
+                  src="./assets/images/info-icon.svg" alt="Дополнительная информация" class="img-checkbox"></span></label>
+            <input type="radio" id="trust" class="investor-input" name="radio">
+            <label for="trust" class="investor-label">Trust<span class="investor-info"><img
+                  src="./assets/images/info-icon.svg" alt="Дополнительная информация" class="img-checkbox"></span></label>
+          </div>
+          <div class="investor-tultip">
+            <p class="investor-paragraph" aria-label="Подробное описание">I am a natural person investing on my own behalf as a sole owner, joint
+              tenant, or tenant in common.</p>
+          </div>
+        </div>
 
-			<div class="section-consent">
-				<form action="#" class="consent-form">
-					<input type="checkbox" id="consent" class="consent-checkbox">
-					<label for="consent" class="consent-label">I agree to the terms and receiving notifications from iintoo <a
-							href="#" class="consent-link">View full terms</a></label>
-					<button class="btn consent-btn">Create Account</button>
-				</form>
-			</div>
-
-		</main>
-	</div>
+        <div class="section-consent">
+          <div class="consent-form">
+            <input type="checkbox" id="consent" class="consent-checkbox">
+            <label for="consent" class="consent-label">I agree to the terms and receiving notifications from iintoo <a
+                href="#" class="consent-link" aria-label="Go to see full terms">View full terms</a></label>
+            <button class="btn consent-btn" aria-label="Create Account">Create Account</button>
+          </div>
+        </div>
+      </form>
+    </main>
+  </div>
 </body>
 
 </html>
