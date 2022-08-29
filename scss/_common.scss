@@ -208,7 +208,6 @@ p {
 }
 
 //читать все
-
 .hidden-container {
   &.active {
     max-height: max-content;
@@ -220,7 +219,6 @@ p {
 }
 
 //content
-
 .content-container {
   display: none;
 
@@ -253,7 +251,6 @@ p {
 }
 
 /*swiper*/
-
 .my-swiper {
 
   @media (max-width: 540px) {
@@ -266,8 +263,8 @@ p {
 }
 
 .swiper-horizontal>.swiper-pagination-bullets,
-.swiper-pagination-bullets.swiper-pagination-horizontal, 
-.swiper-pagination-custom, 
+.swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper-pagination-custom,
 .swiper-pagination-fraction {
   bottom: -5px;
 }

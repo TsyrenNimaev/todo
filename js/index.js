@@ -26,6 +26,9 @@ window.addEventListener("DOMContentLoaded", function () {
         document.querySelector('.menu').classList.remove('active');    //закрываем меню при клике на список
         document.querySelector('.sidebar').classList.remove('active');     
         document.querySelector('.sidebar-nav__container').classList.remove('active');
+        document.querySelector('body').classList.remove('lock'); //разлочить body при клике на элемент меню
+        document.querySelector('.sidebar-search').classList.remove('active'); //скрыть поиск при клике на элемент меню
+        document.querySelector('.header-submit').classList.remove('active');
       });
       const dataTarget = document.querySelector(`[data-target="${path}"]`);
       dataTarget.classList.add('active');
@@ -90,6 +93,11 @@ window.addEventListener("DOMContentLoaded", function () {
       modalLink.addEventListener('click', function(el) {
         const modalName = modalLink.getAttribute('href').replace('#', '');
         const curentModal = document.getElementById(modalName);
+        document.querySelector('.sidebar-nav__container').classList.remove('active');
+        document.querySelector('.sidebar-search').classList.toggle('active');
+        document.querySelector('.header-submit').classList.toggle('active');
+        document.querySelector('.sidebar').classList.toggle('active');
+        menu.classList.toggle('active');
         modalOpen(curentModal);
         el.preventDefault();
       });
@@ -214,14 +222,7 @@ window.addEventListener("DOMContentLoaded", function () {
         direction: 'horizontal',
         pagination: {
           el: '.swiper-pagination',
-        },
-        // breakpoints: {
-        //   540: {
-        //   slidesPerView: 2,
-        //   slidesPerGroup: 2,
-        //   spaceBetween: 32,
-        //   }
-        // }
+        }
       });
     }
   };
@@ -232,15 +233,7 @@ window.addEventListener("DOMContentLoaded", function () {
         direction: 'horizontal',
         pagination: {
           el: '.swiper-pagination',
-        },
-      //   breakpoints: {
-      //     540: {
-      //     slidesPerView: 2,
-      //     slidesPerGroup: 2,
-      //     spaceBetween: 32,
-      //   }
-      // }
-
+        }
       });
     }
   }
@@ -251,15 +244,7 @@ window.addEventListener("DOMContentLoaded", function () {
         direction: 'horizontal',
         pagination: {
           el: '.swiper-pagination',
-        },
-        // breakpoints: {
-        //   540: {
-        //   slidesPerView: 2,
-        //   slidesPerGroup: 2,
-        //   spaceBetween: 32,
-        // }
-      // }
-
+        }
       });
     }
   }
@@ -278,33 +263,3 @@ window.addEventListener("DOMContentLoaded", function () {
 
   });
 });
-
-
-
-
-
-  //dropdown
-
-  // let dropdownBtn = document.querySelectorAll(".arrow-dropdown");
-  // let dropdownContainer = document.querySelectorAll(".dropdown");
-
-  // dropdownBtn.forEach((el, index) => {
-  //   el.addEventListener("click", (event) => {
-  //     event.preventDefault();
-
-  //     let dropdownClassList = dropdownContainer[index].classList;
-  //     if (dropdownClassList.contains("brands-dropdown__container--active")) {
-  //       dropdownClassList.remove("brands-dropdown__container--active");
-  //       dropdownBtn[index].classList.remove("arrow-dropdown--active");
-  //     } else {
-  //       dropdownContainer.forEach((el) =>
-  //         el.classList.remove("brands-dropdown__container--active")
-  //       );
-  //       dropdownClassList.add("brands-dropdown__container--active");
-  //       dropdownBtn.forEach((el) =>
-  //         el.classList.remove("arrow-dropdown--active")
-  //       );
-  //       dropdownBtn[index].classList.add("arrow-dropdown--active");
-  //     }
-  //   });
-  // });

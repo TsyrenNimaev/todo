@@ -165,7 +165,7 @@ p {
   padding-left: 16px;
   padding-bottom: 1px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
 }
 .show-all::before, .show-all::after {
@@ -198,7 +198,7 @@ p {
   padding-left: 16px;
   padding-bottom: 1px;
   cursor: pointer;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1;
   display: none;
 }
@@ -1354,7 +1354,7 @@ p {
 }
 @media (max-width: 540px) {
   .modal .close {
-    top: -10px;
+    top: -20px;
     left: 0;
   }
 }
