@@ -26,21 +26,14 @@ export default class ItemContainer extends Component {
   };
 
   render() {
-    const { label, done, date, editing, onDeleted, onToggleDone, onEditing } =
-      this.props;
+    const { label, done, date, editing, onDeleted, onToggleDone, onEditing } = this.props;
 
     const classEditing = editing ? 'editing' : done ? 'completed' : 'active';
 
     const editInput = (
       <form className="form-change" onSubmit={this.onSubmitEdit}>
         <label>
-          <input
-            type="text"
-            className="edit-input"
-            defaultValue={label}
-            onChange={this.onLabelEditing}
-            autoFocus
-          />
+          <input type="text" className="edit-input" defaultValue={label} onChange={this.onLabelEditing} autoFocus />
         </label>
       </form>
     );
@@ -49,27 +42,14 @@ export default class ItemContainer extends Component {
       <li className={classEditing}>
         <div className="list-item view">
           <label className="item-label">
-            <input
-              type="checkbox"
-              className="item-input"
-              onChange={onToggleDone}
-              checked={done}
-            />
+            <input type="checkbox" className="item-input" onChange={onToggleDone} checked={done} />
             <span className="description-task" onClick={onToggleDone}>
               {label}
             </span>
             <Timer date={date} />
           </label>
-          <button
-            className="btn icon-btn icon-edit"
-            onClick={onEditing}
-            aria-label="Редактировать"
-          ></button>
-          <button
-            className="btn icon-btn icon-destroy"
-            onClick={onDeleted}
-            aria-label="Удалить"
-          ></button>
+          <button className="btn icon-btn icon-edit" onClick={onEditing} aria-label="Редактировать"></button>
+          <button className="btn icon-btn icon-destroy" onClick={onDeleted} aria-label="Удалить"></button>
         </div>
         {editing && editInput}
       </li>

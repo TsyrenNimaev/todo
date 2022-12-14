@@ -69,11 +69,7 @@ export default class App extends Component {
         editing: !oldItem.editing,
       };
       return {
-        todoData: [
-          ...todoData.slice(0, index),
-          newItem,
-          ...todoData.slice(index + 1),
-        ],
+        todoData: [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)],
       };
     });
   };
@@ -84,11 +80,7 @@ export default class App extends Component {
       const oldItem = todoData[index];
       const newItem = { ...oldItem, editing: !oldItem.editing };
       return {
-        todoData: [
-          ...todoData.slice(0, index),
-          newItem,
-          ...todoData.slice(index + 1),
-        ],
+        todoData: [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)],
       };
     });
   };

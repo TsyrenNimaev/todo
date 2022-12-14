@@ -14,14 +14,7 @@ export default class TodoList extends Component {
   };
 
   render() {
-    const {
-      todos,
-      onDeleted,
-      onToggleDone,
-      onEditing,
-      addEditing,
-      onItemAdded,
-    } = this.props;
+    const { todos, onDeleted, onToggleDone, onEditing, addEditing, onItemAdded } = this.props;
 
     const listItems = todos.map((item) => {
       const { ...itemProps } = item;
