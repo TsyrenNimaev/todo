@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import FilterTask from '../filter-task';
+import FilterTask from '../FilterTask';
 
-import '../item-container/style.css';
+import '../ItemContainer/style.css';
 import './style.css';
 
 export default class FooterApp extends Component {

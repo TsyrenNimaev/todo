@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import TodoList from '../todo-list';
-import FooterApp from '../footer-app';
+import TodoList from '../TodoList';
+import FooterApp from '../Footer';
 
 import './style.css';
 

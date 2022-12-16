@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import HeaderApp from '../header-app';
-import SectionApp from '../sections-app';
+import HeaderApp from '../Header';
+import SectionApp from '../SectionApp';
 
 export default class App extends Component {
   idItems = 0;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Timer from '../timer';
+import Timer from '../Timer';
 
 import './style.css';
 
@@ -41,15 +41,22 @@ export default class ItemContainer extends Component {
     return (
       <li className={classEditing}>
         <div className="list-item view">
-          <label className="item-label">
+          <label>
             <input type="checkbox" className="item-input" onChange={onToggleDone} checked={done} />
+          </label>
+          <label className="item-label">
             <span className="description-task" onClick={onToggleDone}>
               {label}
             </span>
             <Timer date={date} />
           </label>
-          <button className="btn icon-btn icon-edit" onClick={onEditing} aria-label="Редактировать"></button>
-          <button className="btn icon-btn icon-destroy" onClick={onDeleted} aria-label="Удалить"></button>
+          <button className="btn icon-btn icon-edit" onClick={onEditing} aria-label="edit button" title="edit"></button>
+          <button
+            className="btn icon-btn icon-destroy"
+            onClick={onDeleted}
+            aria-label="delete button"
+            title="delete"
+          ></button>
         </div>
         {editing && editInput}
       </li>

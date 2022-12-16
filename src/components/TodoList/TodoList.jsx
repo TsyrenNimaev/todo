@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import ItemContainer from '../item-container';
+import ItemContainer from '../ItemContainer';
 
 export default class TodoList extends Component {
   static defaultProps = {
