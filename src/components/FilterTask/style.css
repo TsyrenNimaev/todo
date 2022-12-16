@@ -8,7 +8,7 @@
 
 .filters li {
   display: inline;
-  cursor: default;
+  cursor: pointer;
 }
 
 .filters li button {
@@ -33,4 +33,5 @@
 
 .filters li button.active {
   border-color: rgba(175, 47, 47, 0.2);
+  cursor: default;
 }
