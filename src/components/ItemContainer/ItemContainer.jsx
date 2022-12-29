@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import Timer from '../Timer';
+import Stopwatch from '../Stopwatch';
 
 import './style.css';
 
@@ -26,7 +27,7 @@ export default class ItemContainer extends Component {
   };
 
   render() {
-    const { label, done, date, editing, onDeleted, onToggleDone, onEditing } = this.props;
+    const { label, done, date, editing, onDeleted, onToggleDone, onEditing, min, sec } = this.props;
 
     const classEditing = editing ? 'editing' : done ? 'completed' : 'active';
 
@@ -48,6 +49,7 @@ export default class ItemContainer extends Component {
             <span className="description-task" onClick={onToggleDone}>
               {label}
             </span>
+            <Stopwatch min={min} sec={sec} />
             <Timer date={date} />
           </label>
           <button className="btn icon-btn icon-edit" onClick={onEditing} aria-label="edit button" title="edit"></button>

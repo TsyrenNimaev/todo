@@ -10,9 +10,11 @@ export default class App extends Component {
     todoData: [],
   };
 
-  createTodoItem(label) {
+  createTodoItem(label, min = 0, sec = 0) {
     return {
       label,
+      min,
+      sec,
       done: false,
       editing: false,
       date: new Date(),
@@ -86,12 +88,14 @@ export default class App extends Component {
   };
 
   //добавление новых элементов
-  addItems = (text) => {
-    const newItem = this.createTodoItem(text);
-    //создаем новый массив, добавляем к старому массиву новый элемент
-    this.setState(({ todoData }) => {
-      return { todoData: [...todoData, newItem] };
-    });
+  addItems = (text, min, sec) => {
+    if (text.length !== 0 && !text.match(/^\s/) && min.length !== 0 && sec.length !== 0) {
+      const newItem = this.createTodoItem(text, Number(min), Number(sec));
+      //создаем новый массив, добавляем к старому массиву новый элемент
+      this.setState(({ todoData }) => {
+        return { todoData: [...todoData, newItem] };
+      });
+    }
   };
 
   //изменение фильтра
@@ -120,7 +124,7 @@ export default class App extends Component {
   };
 
   render() {
-    const { todoData, filter } = this.state;
+    const { todoData, filter, min, sec } = this.state;
     const filters = this.filterSelect(todoData, filter);
 
     return (
@@ -138,6 +142,8 @@ export default class App extends Component {
           onFilterSwich={this.filterSwich}
           filter={filter}
           clearCompleted={this.clearCompleted}
+          min={min}
+          sec={sec}
         />
       </section>
     );

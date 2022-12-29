@@ -36,6 +36,6 @@ export default class Timer extends Component {
   }
 
   render() {
-    return <span className="create-task">created {this.state.date}</span>;
+    return <span className="create-task">{this.state.date}</span>;
   }
 }
