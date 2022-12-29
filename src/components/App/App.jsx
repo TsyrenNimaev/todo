@@ -1,66 +1,61 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
 import HeaderApp from '../Header';
 import SectionApp from '../SectionApp';
 
-export default class App extends Component {
-  idItems = 0;
-
-  state = {
-    todoData: [],
-  };
-
-  createTodoItem(label) {
+const App = () => {
+  // let idItems = 0; //не понимаю, почему перестала работать айди, сделал рандомный
+  const createTodoItem = (label, min, sec) => {
     return {
       label,
+      min,
+      sec,
       done: false,
       editing: false,
       date: new Date(),
-      id: this.idItems++,
-      filter: '',
+      id: idItems,
+      // id: idItems++,
     };
-  }
-
-  toggleProperty(arr, id, propName) {
+  };
+  let idItems = Math.random();
+  const [todoData, setTodoData] = useState([]);
+  const [filter, setFilter] = useState('all');
+  const toggleProperty = (arr, id, propName) => {
     const index = arr.findIndex((el) => el.id === id);
     const oldItem = arr[index];
     const newItem = { ...oldItem, [propName]: !oldItem[propName] };
 
     return [...arr.slice(0, index), newItem, ...arr.slice(index + 1)];
-  }
+  };
 
   //удаление выполненных
-  clearCompleted = () => {
-    this.setState(({ todoData }) => {
+  const clearCompleted = () => {
+    setTodoData((todoData) => {
       let filtredTodo = todoData.filter((item) => !item.done);
-      return { todoData: [...filtredTodo] };
+
+      return [...filtredTodo];
     });
   };
 
   //удаление элементов
-  deleteItem = (id) => {
-    this.setState(({ todoData }) => {
-      //получаем индекс элемента
+  const deleteItem = (id) => {
+    setTodoData((todoData) => {
       const index = todoData.findIndex((el) => el.id === id);
-      //возвращаем новый массив без удаленного элемента
-      return {
-        todoData: [...todoData.slice(0, index), ...todoData.slice(index + 1)],
-      };
+
+      return [...todoData.slice(0, index), ...todoData.slice(index + 1)];
     });
   };
 
   //отмечаем как выполненые
-  onToggleDone = (id) => {
-    this.setState(({ todoData }) => {
-      return {
-        todoData: this.toggleProperty(todoData, id, 'done'),
-      };
+  const onToggleDone = (id) => {
+    setTodoData((todoData) => {
+      return toggleProperty(todoData, id, 'done');
     });
   };
 
   //редактирование задачи
-  addEditing = (text, id) => {
-    this.setState(({ todoData }) => {
+  const addEditing = (text, id) => {
+    setTodoData((todoData) => {
       const index = todoData.findIndex((el) => el.id === id);
       const oldItem = todoData[index];
       const newItem = {
@@ -68,39 +63,36 @@ export default class App extends Component {
         label: text ? text : oldItem.label,
         editing: !oldItem.editing,
       };
-      return {
-        todoData: [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)],
-      };
+      return [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)];
     });
   };
 
-  onEditing = (label) => {
-    this.setState(({ todoData }) => {
+  const onEditing = (label) => {
+    setTodoData((todoData) => {
       const index = todoData.findIndex((el) => el.label === label);
       const oldItem = todoData[index];
       const newItem = { ...oldItem, editing: !oldItem.editing };
-      return {
-        todoData: [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)],
-      };
+
+      return [...todoData.slice(0, index), newItem, ...todoData.slice(index + 1)];
     });
   };
 
   //добавление новых элементов
-  addItems = (text) => {
-    const newItem = this.createTodoItem(text);
-    //создаем новый массив, добавляем к старому массиву новый элемент
-    this.setState(({ todoData }) => {
-      return { todoData: [...todoData, newItem] };
-    });
+  const addItems = (text, min, sec) => {
+    if (text.length !== 0 && !text.match(/^\s/) && min.length !== 0 && sec.length !== 0) {
+      const newItem = createTodoItem(text, Number(min), Number(sec));
+      //создаем новый массив, добавляем к старому массиву новый элемент
+      setTodoData((todoData) => [...todoData, newItem]);
+    }
   };
 
   //изменение фильтра
-  filterSwich = (filter) => {
-    this.setState({ filter });
+  const filterSwich = (filter) => {
+    setFilter(filter);
   };
 
   //фильтрация элементов
-  filterSelect = (todoData, filter) => {
+  const filterSelect = (todoData, filter) => {
     if (filter === 'active') {
       return todoData.filter((el) => !el.done);
     }
@@ -110,36 +102,26 @@ export default class App extends Component {
 
     return todoData;
   };
+  const filters = filterSelect(todoData, filter);
 
-  complitedFilterItem = () => {
-    this.setState(({ todoData }) => {
-      const filtredTodo = todoData.filter((item) => !item.done);
+  return (
+    <section>
+      <HeaderApp onItemAdded={addItems} />
+      <SectionApp
+        todos={filters}
+        filterSelect={filterSelect}
+        onDeleted={deleteItem}
+        onToggleDone={onToggleDone}
+        addEditing={addEditing}
+        onEditing={onEditing}
+        onItemAdded={addItems}
+        onFilters={filters}
+        onFilterSwich={filterSwich}
+        filter={filter}
+        clearCompleted={clearCompleted}
+      />
+    </section>
+  );
+};
 
-      return { todoData: [...filtredTodo] };
-    });
-  };
-
-  render() {
-    const { todoData, filter } = this.state;
-    const filters = this.filterSelect(todoData, filter);
-
-    return (
-      <section>
-        <HeaderApp onItemAdded={this.addItems} />
-        <SectionApp
-          todos={filters}
-          filterSelect={this.filterSelect}
-          onDeleted={this.deleteItem}
-          onToggleDone={this.onToggleDone}
-          addEditing={this.addEditing}
-          onEditing={this.onEditing}
-          onItemAdded={this.addItems}
-          onFilters={filters}
-          onFilterSwich={this.filterSwich}
-          filter={filter}
-          clearCompleted={this.clearCompleted}
-        />
-      </section>
-    );
-  }
-}
+export default App;

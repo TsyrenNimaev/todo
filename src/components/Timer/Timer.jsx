@@ -1,41 +1,26 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import formatDistanceToNow from 'date-fns/formatDistanceToNow';
 
 import './style.css';
 
-export default class Timer extends Component {
-  static propTypes = {
-    date: PropTypes.instanceOf(Date),
-  };
-
-  state = {
-    date: formatDistanceToNow(this.props.date, {
-      includeSeconds: true,
-      addSuffix: true,
-    }),
-  };
+const Timer = ({ date }) => {
+  const [dateTimer, setDate] = useState(formatDistanceToNow(date, { includeSeconds: true, addSuffix: true }));
 
   //обновление с интервалом 1с
-  componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 1000);
-  }
+  useEffect(() => {
+    const timerID = setInterval(() => tick(), 1000);
+    return () => clearInterval(timerID);
+  });
 
-  //сбрасываем таймер при удалении элемента
-  componentWillUnmount() {
-    clearInterval(this.timerID);
-  }
+  const tick = () => {
+    setDate(formatDistanceToNow(date, { includeSeconds: true, addSuffix: true }));
+  };
 
-  tick() {
-    this.setState({
-      date: formatDistanceToNow(this.props.date, {
-        includeSeconds: true,
-        addSuffix: true,
-      }),
-    });
-  }
+  return <span className="create-task">{dateTimer}</span>;
+};
 
-  render() {
-    return <span className="create-task">created {this.state.date}</span>;
-  }
-}
+Timer.propTypes = {
+  date: PropTypes.instanceOf(Date),
+};
+export default Timer;

@@ -1,14 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import './style.css';
 
-export default class FilterTask extends Component {
-  static defaultProps = {
-    filter: 'all',
-    filterSwich: () => {},
-  };
-
-  buttons = [
+const FilterTask = ({ filter, onFilterSwich }) => {
+  const button = [
     { name: 'all', label: 'All', id: 1, ariaLabel: 'Показать всё' },
     {
       name: 'active',
@@ -24,28 +20,36 @@ export default class FilterTask extends Component {
     },
   ];
 
-  render() {
-    const { filter, onFilterSwich } = this.props;
-    const buttons = this.buttons.map((button) => {
-      const activeButton = button.name === filter;
-      const classisActive = activeButton ? 'active' : 'complited';
+  const buttons = button.map((button) => {
+    const activeButton = button.name === filter;
+    const classisActive = activeButton ? 'active' : 'complited';
 
-      return (
-        <li key={button.id}>
-          <button
-            className={classisActive}
-            type="button"
-            aria-label={button.ariaLabel}
-            onClick={() => {
-              onFilterSwich(button.name);
-            }}
-          >
-            {button.label}
-          </button>
-        </li>
-      );
-    });
+    return (
+      <li key={button.id}>
+        <button
+          className={classisActive}
+          type="button"
+          aria-label={button.ariaLabel}
+          onClick={() => {
+            onFilterSwich(button.name);
+          }}
+        >
+          {button.label}
+        </button>
+      </li>
+    );
+  });
 
-    return <ul className="filters">{buttons}</ul>;
-  }
-}
+  return <ul className="filters">{buttons}</ul>;
+};
+
+FilterTask.defaultProps = {
+  filter: 'all',
+  onFilterSwich: () => {},
+};
+FilterTask.propTypes = {
+  filter: PropTypes.string,
+  onFilterSwich: PropTypes.func,
+};
+
+export default FilterTask;
